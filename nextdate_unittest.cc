@@ -57,3 +57,90 @@ TEST( NextDateTest, WeakNormalMonth)
 	EXPECT_EQ(20101231, nextdate(2010, DEC, 30));
 	EXPECT_EQ(20120101, nextdate(2011, DEC, 31));
 }
+TEST(NextDateTest , WeakRobust)
+{
+	//min boundary - 1
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min - 1, 1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min - 1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, 1, 0));
+	//max boundary + 1
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max + 1, 1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max + 1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, JAN, 31 + 1));
+	//LeapYear Feb 29 days and NonLeap Feb 28 days
+	EXPECT_EQ(INVALID_DATE, nextdate(2000, FEB, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, FEB, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, APR, 30 + 1));
+}
+TEST(NextDateTest , StrongRobust)
+{
+	//two parameter boundary_min - 1 test
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, 1, 0));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min-1, 0));
+	//all boundary_min - 1 test
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 0));
+	
+	//two parameter boundary_max + 1 test
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, JAN, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, FEB, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, FEB, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, APR, 30 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max+1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max+1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max+1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max+1, 30 + 1));
+	//all boundary_max + 1 test
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 30 + 1));
+
+	//one max+1, one min-1, one normal
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_max+1, 0));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min-1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min-1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min-1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(2001, month_min-1, 30 + 1));
+
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, 1, 0));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, 1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, 1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, 1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, 1, 30 + 1));
+
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_min-1, 1));
+
+	//one max+1, two min-1
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_min-1, 0));
+	
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 0));
+	
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_min-1, 30 + 1));
+	
+	//two max+1, one min-1
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, month_max+1, 0));
+	
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, 1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, 1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, 1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_max+1, 1, 30 + 1));
+	
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 31 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 28 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 29 + 1));
+	EXPECT_EQ(INVALID_DATE, nextdate(year_min-1, month_max+1, 30 + 1));
+
+}
+TEST(NextDateTest, LeapYearTest)
+{
+	EXPECT_EQ(19000301, nextdate(1900,FEB,29));
+	EXPECT_EQ(20000301, nextdate(2000,FEB,29));
+	EXPECT_EQ(INVALID_DATE, nextdate(2002,FEB,29));
+	EXPECT_EQ(20040301, nextdate(2004,FEB,29));
+}
