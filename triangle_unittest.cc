@@ -28,3 +28,50 @@ TEST(TriangleInputSpecTest , OverMaxEdge)
 	// all over max edge
 	EXPECT_EQ(TRIANGLE_INVALID_INPUT, triangle_type(201,201,201));
 }
+
+/*************** Boundary Test *****************/
+TEST(Triangle_Boundary_Test, NormalBoundary)
+{
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,100,triangle_min_edge));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,100,triangle_min_edge+1));
+	EXPECT_EQ(EQUILATERAL_TRIANGLE, triangle_type(100,100,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,100,triangle_max_edge-1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(100,100,triangle_max_edge));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,triangle_min_edge,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,triangle_min_edge+1,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(100,triangle_max_edge-1,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(100,triangle_max_edge,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_min_edge,100,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_min_edge+1,100,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_max_edge-1,100,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_max_edge,100,100));
+}
+TEST(Triangle_Boundary_Test, WorstCaseBoundaryValueTest)
+{
+	EXPECT_EQ(EQUILATERAL_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge,triangle_min_edge));	
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge,triangle_min_edge+1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge,triangle_max_edge-1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge,triangle_max_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge+1,triangle_min_edge));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge+1,triangle_min_edge+1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge+1,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge+1,triangle_max_edge-1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_min_edge+1,triangle_max_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,100,triangle_min_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,100,triangle_min_edge+1));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_min_edge,100,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,100,triangle_max_edge-1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,100,triangle_max_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge-1,triangle_min_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge-1,triangle_min_edge+1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge-1,100));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge-1,triangle_max_edge-1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge-1,triangle_max_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge,triangle_min_edge));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge,triangle_min_edge+1));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge,100));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(triangle_min_edge,triangle_max_edge,triangle_max_edge-1));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(1,triangle_max_edge,triangle_max_edge));
+}
+
