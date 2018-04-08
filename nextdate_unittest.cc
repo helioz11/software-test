@@ -139,7 +139,7 @@ TEST(NextDateTest , StrongRobust)
 }
 TEST(NextDateTest, LeapYearTest)
 {
-	EXPECT_EQ(19000301, nextdate(1900,FEB,29));
+	EXPECT_EQ(INVALID_DATE, nextdate(1900,FEB,29));
 	EXPECT_EQ(20000301, nextdate(2000,FEB,29));
 	EXPECT_EQ(INVALID_DATE, nextdate(2002,FEB,29));
 	EXPECT_EQ(20040301, nextdate(2004,FEB,29));
