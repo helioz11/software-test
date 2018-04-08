@@ -8,9 +8,12 @@ int leap_year = 0;
 
 int nextdate( int y, int m, int d)
 {
-	d++;
 	if(((y%4==0) && (y%100!=0)) || (y%400==0)) leap_year = 1;
 	else leap_year = 0;
+
+	if(((y>year_max)||(y<year_min)||(m>month_max)||m<month_min)||(!leap_year && (d>max_day[m]))||(leap_year && (d>leap_year_max_day[m]))||d<1) return INVALID_DATE;
+
+	d++;
 
 	if((leap_year && d > leap_year_max_day[m]) || (d > max_day[m] && !leap_year) )
 	{
