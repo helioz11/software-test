@@ -75,3 +75,11 @@ TEST(Triangle_Boundary_Test, WorstCaseBoundaryValueTest)
 	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(1,triangle_max_edge,triangle_max_edge));
 }
 
+/********************EQUIVALENCE TEST**********************/
+TEST(Triangle_Equivalence_Test, Weak_Normal)
+{
+	EXPECT_EQ(EQUILATERAL_TRIANGLE, triangle_type(5,5,5));
+	EXPECT_EQ(ISOSCELES_TRIANGLE, triangle_type(2,2,3));
+	EXPECT_EQ(SCALENE_TRIANGLE, triangle_type(3,4,5));
+	EXPECT_EQ(NOT_A_TRIANGLE, triangle_type(4,1,2));
+}
