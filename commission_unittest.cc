@@ -24,13 +24,13 @@ TEST(CommisionSpecTest, WeakNormalTest)
 
 TEST(CommisionSpecTest, WeakRobustTest)
 {
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock, 1, 1));
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, min_stock, 1));
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, 1, min_barrel));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1, 1, 1));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, min_stock-1, 1));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, 1, min_barrel-1));
 	
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(max_lock, 1, 1));
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, max_stock, 1));
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, 1, max_barrel));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(max_lock+1, 1, 1));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, max_stock+1, 1));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(1, 1, max_barrel+1));
 }
 
 TEST(CommisionSpecTest, StrongRobustTest)
