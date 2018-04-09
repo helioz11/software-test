@@ -16,6 +16,6 @@
 
 #define INVALID_SALE 0.0
 
-double commision(int lock, int stock, int barrel);
+double commission(int lock, int stock, int barrel);
 
 #endif
