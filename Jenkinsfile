@@ -9,6 +9,11 @@ pipeline {
             steps {
                 sh 'make -C make'
             }
-        }
+	}
+	stage('Test') {
+	    steps {
+		sh 'make -C make test'
+	    }
+	}
     }
 }
