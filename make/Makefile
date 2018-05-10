@@ -75,31 +75,31 @@ gtest_main.a : gtest-all.o gtest_main.o
 # function.
 
 triangle.o : $(USER_DIR)/triangle.c $(USER_DIR)/triangle.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/triangle.c
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS)  -c $(USER_DIR)/triangle.c
 
 triangle_unittest.o : $(USER_DIR)/triangle_unittest.cc \
                      $(USER_DIR)/triangle.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/triangle_unittest.cc
 
 triangle_unittest : triangle.o triangle_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
 
 nextdate.o : $(USER_DIR)/nextdate.c $(USER_DIR)/nextdate.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/nextdate.c
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -c $(USER_DIR)/nextdate.c
 
 nextdate_unittest.o : $(USER_DIR)/nextdate_unittest.cc \
                      $(USER_DIR)/nextdate.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/nextdate_unittest.cc
 
 nextdate_unittest : nextdate.o nextdate_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
 
 commission.o : $(USER_DIR)/commission.c $(USER_DIR)/commission.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/commission.c
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -c $(USER_DIR)/commission.c
 
 commission_unittest.o : $(USER_DIR)/commission_unittest.cc \
                      $(USER_DIR)/commission.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/commission_unittest.cc
 
 commission_unittest : commission.o commission_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
