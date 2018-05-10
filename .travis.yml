@@ -14,4 +14,4 @@ branches:
  only:
  - master
 after_success:
-  - codecov -X gcov
+  - codecov -t 3686bf12-4804-4ed5-a1d6-6a0801e2847d -X gcov
