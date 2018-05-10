@@ -10,6 +10,10 @@ script:
 - make/triangle_unittest
 - make/nextdate_unittest
 - make/commission_unittest
+- cd make
+- gcov triangle.c
+- gcov nextdate.c
+- gcov commission.c
 branches:
  only:
  - master
