@@ -5,9 +5,9 @@ os:
 - linux
 script:
 - make -C make
-- ./triangle_unittest -C make
-- ./nextdate_unittest -C make
-- ./commission_unittest -C make
+- ./triangle_unittest
+- ./nextdate_unittest
+- ./commission_unittest
 branches:
  only:
  - master
