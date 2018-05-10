@@ -75,7 +75,7 @@ gtest_main.a : gtest-all.o gtest_main.o
 # function.
 
 triangle.o : $(USER_DIR)/triangle.c $(USER_DIR)/triangle.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS)  -c $(USER_DIR)/triangle.c
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -c $(USER_DIR)/triangle.c
 
 triangle_unittest.o : $(USER_DIR)/triangle_unittest.cc \
                      $(USER_DIR)/triangle.h $(GTEST_HEADERS)
