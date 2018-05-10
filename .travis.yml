@@ -9,6 +9,6 @@ script:
 - ./nextdate_unittest -C make
 - ./commission_unittest -C make
 branches:
-	only:
-	- master
+ only:
+ - master
 
