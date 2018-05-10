@@ -1,6 +1,8 @@
 languange: cpp
 compiler :
 - g++
+install:
+- sudo pip install codecov
 os:
 - linux
 script:
@@ -11,4 +13,5 @@ script:
 branches:
  only:
  - master
-
+after_success:
+  - codecov -X gcov
