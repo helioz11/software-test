@@ -1,0 +1,14 @@
+languange: cpp
+compiler :
+- g++
+os:
+- linux
+script:
+- make -C make
+- ./triangle_unittest -C make
+- ./nextdate_unittest -C make
+- ./commission_unittest -C make
+branches:
+	only:
+	- master
+
