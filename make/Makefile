@@ -24,6 +24,9 @@ USER_DIR = ../src
 # the compiler doesn't generate warnings in Google Test headers.
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
+# Combine with gcov
+GCOVFLAGS += -fprofile-arcs -ftest-coverage
+
 # Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread
 
