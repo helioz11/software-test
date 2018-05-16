@@ -32,7 +32,8 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = triangle_unittest nextdate_unittest commission_unittest
+TESTS = triangle_unittest triangle_covTest nextdate_unittest  nextdate_covTest commission_unittest \
+	commission_covTest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -84,6 +85,14 @@ triangle_unittest.o : $(USER_DIR)/triangle_unittest.cc \
 triangle_unittest : triangle.o triangle_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
 
+triangle_covTest.o : $(USER_DIR)/triangle_covTest.cc \
+                     $(USER_DIR)/triangle.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/triangle_covTest.cc
+
+triangle_covTest : triangle.o triangle_covTest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
+
+
 nextdate.o : $(USER_DIR)/nextdate.c $(USER_DIR)/nextdate.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -c $(USER_DIR)/nextdate.c
 
@@ -94,6 +103,14 @@ nextdate_unittest.o : $(USER_DIR)/nextdate_unittest.cc \
 nextdate_unittest : nextdate.o nextdate_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
 
+nextdate_covTest.o : $(USER_DIR)/nextdate_covTest.cc \
+                     $(USER_DIR)/nextdate.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/nextdate_covTest.cc
+
+nextdate_covTest : nextdate.o nextdate_covTest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
+
+
 commission.o : $(USER_DIR)/commission.c $(USER_DIR)/commission.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -c $(USER_DIR)/commission.c
 
@@ -103,3 +120,12 @@ commission_unittest.o : $(USER_DIR)/commission_unittest.cc \
 
 commission_unittest : commission.o commission_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
+
+commission_covTest.o : $(USER_DIR)/commission_covTest.cc \
+                     $(USER_DIR)/commission.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/commission_covTest.cc
+
+commission_covTest : commission.o commission_covTest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
+
+

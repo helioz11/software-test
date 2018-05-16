@@ -7,9 +7,9 @@ os:
 - linux
 script:
 - make -C make
-- make/triangle_unittest
-- make/nextdate_unittest
-- make/commission_unittest
+- make/triangle_covTest
+- make/nextdate_covTest
+- make/commission_covTest
 - cd make
 - gcov triangle.c
 - gcov nextdate.c
