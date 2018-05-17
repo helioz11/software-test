@@ -7,9 +7,13 @@ Update Jenkinsfile
 Support individual testing, follow Makefile
 ## Makefile
 make [all] - make all googletest executable file(unittest & covTest)
+
 make clean - remove all file generate by make
+
 make triangle_*_test - run triangle test (change * to c0/c1/c2/c_MCDC)
+
 make nextdate_*_test - run nextdate test (change * to c0/c1/c2/c_MCDC)
+
 make commission_*_test - run commission test (change * to c0/c1/c2/c_MCDC)
 
 ## Steps
