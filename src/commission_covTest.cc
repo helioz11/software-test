@@ -2,13 +2,13 @@
 #include <gtest/gtest.h>
 
 
-TEST(CommisionCodeTest, C0_Test)
+TEST(CommissionCodeTest, C0_Test)
 {
-	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1,1,1));
-	EXPECT_DOUBLE_EQ(1400.0, commission(69,79,89));
+	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1,max_stock+1,min_barrel-1));
+	EXPECT_DOUBLE_EQ(100.0, commission(10,10,10));
 }
 
-TEST(CommisionCodeTest, C1_Test)
+TEST(CommissionCodeTest, C1_Test)
 {
 	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1,1,1));
 	EXPECT_DOUBLE_EQ(100.0, commission(10,10,10));
@@ -16,7 +16,7 @@ TEST(CommisionCodeTest, C1_Test)
 	EXPECT_DOUBLE_EQ(1400.0, commission(69,79,89));
 }
 
-TEST(CommisionCodeTest, C2_Test)
+TEST(CommissionCodeTest, C2_Test)
 {
 	//No loop in the code, same as C1
 	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1,1,1));
@@ -25,7 +25,7 @@ TEST(CommisionCodeTest, C2_Test)
 	EXPECT_DOUBLE_EQ(1400.0, commission(69,79,89));
 }
 
-TEST(CommisionCodeTest, C_MCDC_Test)
+TEST(CommissionCodeTest, C_MCDC_Test)
 {
 	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(min_lock-1,1,1));
 	EXPECT_DOUBLE_EQ(INVALID_SALE, commission(max_lock+1,1,1));

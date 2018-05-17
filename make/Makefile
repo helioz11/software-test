@@ -128,4 +128,63 @@ commission_covTest.o : $(USER_DIR)/commission_covTest.cc \
 commission_covTest : commission.o commission_covTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GCOVFLAGS) -lpthread $^ -o $@
 
-
+triangle_c0_test : triangle_covTest
+	  rm -f -- triangle.c.gcov
+	  rm -f -- triangle.gcda
+	  ./triangle_covTest --gtest_filter=TriangleCodeTest.C0_Test
+	  gcov -b triangle.c
+nextdate_c0_test : nextdate_covTest
+	  rm -f -- nextdate.c.gcov
+	  rm -f -- nextdate.gcda
+	  ./nextdate_covTest --gtest_filter=NextDateCodeTest.C0_Test
+	  gcov -b nextdate.c
+commission_c0_test :  commission_covTest
+	  rm -f -- commission.c.gcov
+	  rm -f -- commission.gcda
+	  ./commission_covTest --gtest_filter=CommissionCodeTest.C0_Test
+	  gcov -b commission.c
+triangle_c1_test : triangle_covTest
+	  rm -f -- triangle.c.gcov
+	  rm -f -- triangle.gcda
+	  ./triangle_covTest --gtest_filter=TriangleCodeTest.C1_Test
+	  gcov -b triangle.c
+nextdate_c1_test : nextdate_covTest
+	  rm -f -- nextdate.c.gcov
+	  rm -f -- nextdate.gcda
+	  ./nextdate_covTest --gtest_filter=NextDateCodeTest.C1_Test
+	  gcov -b nextdate.c
+commission_c1_test :  commission_covTest
+	  rm -f -- commission.c.gcov
+	  rm -f -- commission.gcda
+	  ./commission_covTest --gtest_filter=CommissionCodeTest.C1_Test
+	  gcov -b commission.c
+triangle_c2_test : triangle_covTest
+	  rm -f -- triangle.c.gcov
+	  rm -f -- triangle.gcda
+	  ./triangle_covTest --gtest_filter=TriangleCodeTest.C2_Test
+	  gcov -b triangle.c
+nextdate_c2_test : nextdate_covTest
+	  rm -f -- nextdate.c.gcov
+	  rm -f -- nextdate.gcda
+	  ./nextdate_covTest --gtest_filter=NextDateCodeTest.C2_Test
+	  gcov -b nextdate.c
+commission_c2_test :  commission_covTest
+	  rm -f -- commission.c.gcov
+	  rm -f -- commission.gcda
+	  ./commission_covTest --gtest_filter=CommissionCodeTest.C2_Test
+	  gcov -b commission.c
+triangle_c_MCDC_test : triangle_covTest
+	  rm -f -- triangle.c.gcov
+	  rm -f -- triangle.gcda
+	  ./triangle_covTest --gtest_filter=TriangleCodeTest.C_MCDC_Test
+	  gcov -b triangle.c
+nextdate_c_MCDC_test : nextdate_covTest
+	  rm -f -- nextdate.c.gcov
+	  rm -f -- nextdate.gcda
+	  ./nextdate_covTest --gtest_filter=NextDateCodeTest.C_MCDC_Test
+	  gcov -b nextdate.c
+commission_c_MCDC_test :  commission_covTest
+	  rm -f -- commission.c.gcov
+	  rm -f -- commission.gcda
+	  ./commission_covTest --gtest_filter=CommissionCodeTest.C_MCDC_Test
+	  gcov -b commission.c
